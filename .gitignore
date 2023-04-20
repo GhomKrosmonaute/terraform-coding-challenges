@@ -1,0 +1,9 @@
+.idea
+.vscode
+.terraform
+.env
+venv
+rpdk.log
+node_modules
+package-lock.json
+yarn.lock

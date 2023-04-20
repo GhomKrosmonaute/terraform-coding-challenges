@@ -1,0 +1,9 @@
+{
+  "scripts": {
+
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "@kennship/gulp-terraform": "^0.0.1"
+  }
+}
