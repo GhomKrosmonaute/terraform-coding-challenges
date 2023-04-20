@@ -9,3 +9,4 @@ package-lock.json
 yarn.lock
 terraform.*
 yarn-error.log
+.terraform.lock.hcl
