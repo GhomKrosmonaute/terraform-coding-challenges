@@ -21,23 +21,25 @@ terraform {
 
 provider "aws" {
   profile = "default"
-  region = "ap-northeast-1"
+  region = var.region
 }
 
 resource "aws_rds_cluster" "db_cluster" {
-    cluster_identifier = "cluster"
-    engine             = "aurora-postgresql"
-    engine_version     = "11.9"
-    database_name      = "postgres"
-    master_username    = "postgres"
-    master_password    = "postgres"
-    skip_final_snapshot = true
+  cluster_identifier = "cluster"
+  engine             = "aurora-postgresql"
+  engine_version     = "11.9"
+  database_name      = var.pg_database_name
+  master_username    = var.pg_database_user
+  master_password    = var.pg_database_password
+  db_cluster_instance_class = var.pg_database_instance_class
+  backup_retention_period = 5
+  preferred_backup_window = "07:00-09:00"
 }
 
 resource "aws_rds_cluster_instance" "db_cluster_instance" {
   cluster_identifier = aws_rds_cluster.db_cluster.id
-  instance_class     = "db.t2.micro"
-  engine             = "aurora-postgresql"
+  instance_class = aws_rds_cluster.db_cluster.db_cluster_instance_class
+  engine = aws_rds_cluster.db_cluster.engine
 }
 
 resource "aws_api_gateway_rest_api" "server" {

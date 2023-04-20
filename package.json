@@ -1,6 +1,10 @@
 {
   "scripts": {
-
+    "init": "cd terraform && terraform init",
+    "apply": "cd terraform && terraform apply",
+    "plan": "cd terraform && terraform plan",
+    "destroy": "cd terraform && terraform destroy",
+    "login": "cd terraform && terraform login"
   },
   "devDependencies": {
     "gulp": "^4.0.2",
